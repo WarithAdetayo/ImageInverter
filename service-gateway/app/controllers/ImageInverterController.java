@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-//@Api(value = "Image Invert")
+@Api(value = "Image Invert")
 public class ImageInverterController extends Controller {
     String uploadFilePath = "uploads/";
 
