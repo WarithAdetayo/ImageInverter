@@ -27,20 +27,20 @@ public class ImageInverterController extends Controller {
         }
     }
 
-//    @ApiOperation(value = "Upload an image to invert")
-//    @ApiResponses(
-//            value = {
-//                    @ApiResponse( code=200, message = "File upload successful", response = String.class),
-//                    @ApiResponse(code = 400, message = "File Upload failed. File not received", response = String.class),
-//                    @ApiResponse(code = 400, message = "An Image file is expected", response = String.class),
-//                    @ApiResponse(code = 500, message = "Unable to save file", response = String.class)
-//            }
-//    )
-//    @ApiImplicitParam(
-//            name = "image",     value = "image file to upload",
-//            dataType = "file",  paramType = "form",
-//            required = true
-//    )
+    @ApiOperation(value = "Upload an image to invert")
+    @ApiResponses(
+            value = {
+                    @ApiResponse( code=200, message = "File upload successful", response = String.class),
+                    @ApiResponse(code = 400, message = "File Upload failed. File not received", response = String.class),
+                    @ApiResponse(code = 400, message = "An Image file is expected", response = String.class),
+                    @ApiResponse(code = 500, message = "Unable to save file", response = String.class)
+            }
+    )
+    @ApiImplicitParam(
+            name = "image",     value = "image file to upload",
+            dataType = "file",  paramType = "form",
+            required = true
+    )
     public Result invertImage() {
         Http.MultipartFormData<File> formData = request().body().asMultipartFormData();
         Http.MultipartFormData.FilePart<File> filePart = formData.getFile("image");
@@ -80,8 +80,7 @@ public class ImageInverterController extends Controller {
         File file = new File(uploadFilePath, imageFilename);
 
         if (!file.exists())
-            return notFound("Image not found: Have you fetched the image before??");
-
+            return notFound("Image not found: pls upload an image to convert via the invert-image endpoint");
 
         return ok(file);
     }
